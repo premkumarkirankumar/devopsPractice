@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-chrome-node
+  labels: 
+    app: selenium-chrome-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: selenium-chrome-node
+  template:
+    metadata:
+      labels: 
+    spec:
+      containers:
+        - name: selenium-chrome-node
+          image: selenium/node-chrome
+          ports:
+            - containerPort: 5553
+#          env:
+#            - name: HUB_HOST
+#              value: "selenium-chrome-node"
+#            - name: HUB_PORT
+#              value: "4444"
