@@ -4,6 +4,7 @@ metadata:
   name: selenium-chrome-node
   labels: 
     app: selenium-chrome-node
+    app.kubernetes.io/name: selenium-chrome-node
 spec:
   replicas: 1
   selector:
@@ -12,14 +13,20 @@ spec:
   template:
     metadata:
       labels: 
+        app: selenium-chrome-node
+        app.kubernetes.io/name: selenium-chrome-node
     spec:
       containers:
         - name: selenium-chrome-node
-          image: selenium/node-chrome
+          image: selenium/node-chrome:4.1.2-20220217
+          resources:
+              limits:
+                cpu: "1"
+                memory:  1Gi
           ports:
             - containerPort: 5553
-#          env:
-#            - name: HUB_HOST
-#              value: "selenium-chrome-node"
-#            - name: HUB_PORT
-#              value: "4444"
+          env:
+            - name: HUB_HOST
+              value: "selenium-hub"
+            - name: HUB_PORT
+              value: "4444"

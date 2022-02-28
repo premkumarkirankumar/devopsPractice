@@ -4,6 +4,7 @@ metadata:
   name: selenium-hub
   labels:
     app: selenium-hub
+    app.kubernetes.io/name: selenium-hub
 spec:
   replicas: 1
   selector:
@@ -12,11 +13,12 @@ spec:
   template:
     metadata:
       labels:
-          app: selenium-hub
+        app: selenium-hub
+        app.kubernetes.io/name: selenium-hub
     spec:
       containers:
         - name: selenium-hub
-          image: selenium/hub:latest
+          image: selenium/hub:4.1.2-20220217
           ports:
             - containerPort: 4444
               protocol: TCP
@@ -41,5 +43,4 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 10
             successThreshold: 1
-            failureThreshold: 10        
-            
+            failureThreshold: 10

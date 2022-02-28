@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: selenium-hub
   labels:
+     app: selenium-hub
 spec:
   selector:
     app: selenium-hub

@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: selenium-chrome-node
   labels:
+    name: selenium-chrome-node
 spec:
   type: ClusterIP
   selector:
